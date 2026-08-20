@@ -14,7 +14,7 @@ import {
   Command
 } from 'lucide-react';
 import { InstagramIcon } from './SocialIcons';
-import { CATEGORIES } from '../data/products';
+import { Lock } from 'lucide-react';
 import TavoLogo from './TavoLogo';
 
 export default function Header({ 
@@ -29,7 +29,9 @@ export default function Header({
   onOpenCart,
   wishlistCount,
   onOpenWishlist,
-  onOpenTechBot
+  onOpenTechBot,
+  categories,
+  onAdminClick
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
@@ -60,7 +62,17 @@ export default function Header({
             <span className="bg-gradient-to-r from-[#C59F60] to-[#DDB856] text-[#0A0A0A] px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black tracking-wider uppercase shadow-sm font-mono shrink-0">
               🇨🇴 COLOMBIA
             </span>
-            <span className="w-px h-3 bg-[#333333] hidden xs:block"></span>
+              {/* Admin Button */}
+              <button 
+                onClick={onAdminClick}
+                className="hidden md:flex items-center gap-1.5 text-xs text-neutral-400 hover:text-[#C59F60] transition-colors bg-[#1A1A1A] px-2 py-1 rounded-md border border-[#2A2A2A] hover:border-[#C59F60]"
+                title="Panel de Administración VIP"
+              >
+                <Lock className="w-3.5 h-3.5" />
+                <span>Admin</span>
+              </button>
+
+              <div className="h-4 w-px bg-neutral-700 hidden sm:block mx-1"></div>
             <Truck className="w-3.5 h-3.5 text-[#C59F60] shrink-0 hidden xs:block" />
             <span className="text-neutral-300 truncate text-[11px]">
               Envíos VIP 24h asegurados a todo el país
@@ -244,8 +256,8 @@ export default function Header({
           isDark ? 'border-[#222222] bg-[#0A0A0A]' : 'border-[#EAEAEA] bg-[#FAFAFA]'
         }`}>
           <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-            <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto py-2 sm:py-2.5 no-scrollbar scroll-smooth">
-              {CATEGORIES.map((cat) => {
+            <div className="flex gap-1.5 sm:gap-2 px-1 sm:px-2 min-w-max pb-1">
+              {categories.map((cat) => {
                 const isActive = selectedCategory === cat.id;
                 return (
                   <button

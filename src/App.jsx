@@ -15,10 +15,49 @@ import FlyingMascotOverlay from './components/FlyingMascotOverlay';
 import FloatingContactButtons from './components/FloatingContactButtons';
 import Footer from './components/Footer';
 
-import { INITIAL_PRODUCTS } from './data/products';
+import AdminPanelModal from './components/AdminPanelModal';
+
+import { INITIAL_PRODUCTS, CATEGORIES as INITIAL_CATEGORIES } from './data/products';
 
 export default function App() {
-  const [products] = useState(INITIAL_PRODUCTS);
+  const [products, setProducts] = useState(() => {
+    try {
+      const saved = localStorage.getItem('dtavo_products');
+      return saved ? JSON.parse(saved) : INITIAL_PRODUCTS;
+    } catch {
+      return INITIAL_PRODUCTS;
+    }
+  });
+
+  const [categories, setCategories] = useState(() => {
+    try {
+      const saved = localStorage.getItem('dtavo_categories');
+      return saved ? JSON.parse(saved) : INITIAL_CATEGORIES;
+    } catch {
+      return INITIAL_CATEGORIES;
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem('dtavo_products', JSON.stringify(products));
+  }, [products]);
+
+  useEffect(() => {
+    localStorage.setItem('dtavo_categories', JSON.stringify(categories));
+  }, [categories]);
+
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
+
+  useEffect(() => {
+    const checkHash = () => {
+      if (window.location.hash === '#admin') {
+        setIsAdminOpen(true);
+      }
+    };
+    checkHash();
+    window.addEventListener('hashchange', checkHash);
+    return () => window.removeEventListener('hashchange', checkHash);
+  }, []);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   
@@ -165,6 +204,7 @@ export default function App() {
         onToggleTheme={toggleTheme}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
+        categories={categories}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
         cartCount={cartCount}
@@ -173,6 +213,7 @@ export default function App() {
         wishlistCount={wishlistIds.length}
         onOpenWishlist={() => setIsWishlistOpen(true)}
         onOpenTechBot={() => setIsTechBotOpen(true)}
+        onAdminClick={() => setIsAdminOpen(true)}
       />
 
       {/* Main Content Area */}

@@ -3,7 +3,7 @@ import { Truck, ShieldCheck, Mail, Phone, ArrowRight, Globe, MessageCircle, Send
 import { InstagramIcon } from './SocialIcons';
 import TavoLogo, { TavoIsotype } from './TavoLogo';
 
-export default function Footer({ onCategorySelect }) {
+export default function Footer({ onCategorySelect, onAdminClick, categories }) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -168,21 +168,14 @@ export default function Footer({ onCategorySelect }) {
               Categorías
             </h4>
             <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-neutral-300 font-medium">
-              {[
-                { id: 'celulares', label: 'Flagship Smartphones' },
-                { id: 'gaming', label: 'Celulares Gamer' },
-                { id: 'smartwatches', label: 'Relojes de Lujo' },
-                { id: 'audio', label: 'Audio Hi-Fi' },
-                { id: 'laptops', label: 'Laptops & Workstations' },
-                { id: 'accesorios', label: 'Bases & GaN Gold' },
-              ].map(cat => (
+              {(categories || []).filter(c => c.id !== 'all').slice(0, 6).map(cat => (
                 <li key={cat.id}>
                   <button 
                     onClick={() => onCategorySelect(cat.id)} 
                     className="hover:text-[#C59F60] transition-colors duration-200 flex items-center gap-2 group text-left"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-neutral-700 group-hover:bg-[#C59F60] transition-colors shrink-0"></span>
-                    <span>{cat.label}</span>
+                    <span>{cat.name}</span>
                   </button>
                 </li>
               ))}
@@ -244,10 +237,18 @@ export default function Footer({ onCategorySelect }) {
         <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] sm:text-xs text-neutral-500 gap-3 sm:gap-4 font-mono">
           <p>© 2026 La tienda TAVO. Todos los derechos reservados.</p>
           
-          <div className="flex items-center gap-4 sm:gap-6 text-[10px] sm:text-xs font-semibold">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-[10px] sm:text-xs font-semibold justify-center sm:justify-end mt-4 sm:mt-0">
             <span className="hover:text-[#C59F60] cursor-pointer transition-colors">Términos de Servicio</span>
             <span className="hover:text-[#C59F60] cursor-pointer transition-colors">Política de Privacidad</span>
             <span className="hover:text-[#C59F60] cursor-pointer transition-colors">Garantía VIP</span>
+            <span className="w-1 h-1 rounded-full bg-neutral-700 hidden sm:block"></span>
+            <button 
+              onClick={onAdminClick}
+              className="flex items-center gap-1.5 text-neutral-500 hover:text-[#C59F60] transition-colors group"
+            >
+              <Lock className="w-3 h-3 group-hover:text-[#C59F60]" />
+              <span>Admin</span>
+            </button>
           </div>
         </div>
       </div>
