@@ -27,19 +27,19 @@ export default function VipBenefitsBar({ theme, onOpenTechBot }) {
   ];
 
   return (
-    <section className={`py-6 border-b transition-colors relative z-20 ${
+    <section className={`py-4 sm:py-6 border-b transition-colors relative z-20 ${
       isDark ? 'bg-[#0A0A0A]/90 border-[#222222]' : 'bg-[#F0F0F0] border-[#E0E0E0]'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
           {benefits.map((b, idx) => {
             const Icon = b.icon;
             return (
               <div
                 key={idx}
                 onClick={b.action ? b.action : undefined}
-                className={`p-4 rounded-2xl border transition-all duration-300 flex items-start gap-3.5 group relative overflow-hidden ${
-                  b.action ? 'cursor-pointer' : ''
+                className={`p-3.5 sm:p-4 rounded-2xl border transition-all duration-300 flex items-center sm:items-start gap-3 sm:gap-3.5 group relative overflow-hidden ${
+                  b.action ? 'cursor-pointer active:scale-[0.98]' : ''
                 } ${
                   isDark 
                     ? 'bg-[#111111]/80 hover:bg-[#161616] border-[#222222] hover:border-[#C59F60]/50 hover:shadow-xl hover:shadow-[#C59F60]/10' 
@@ -64,7 +64,7 @@ export default function VipBenefitsBar({ theme, onOpenTechBot }) {
                   <p className="text-[11px] text-neutral-400 font-medium leading-snug line-clamp-2">
                     {b.subtitle}
                   </p>
-                  <span className="inline-block text-[9px] font-mono font-bold text-[#C59F60] mt-1.5 uppercase tracking-wider">
+                  <span className="inline-block text-[9px] font-mono font-bold text-[#C59F60] mt-1 uppercase tracking-wider">
                     ✦ {b.tag}
                   </span>
                 </div>

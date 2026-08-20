@@ -8,9 +8,10 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
   const [formData, setFormData] = useState({
     name: 'Carlos Mendoza',
     email: 'carlos@example.com',
-    phone: '55 1234 5678',
-    address: 'Av. Paseo de la Reforma 123, Depto 4B',
+    phone: '300 123 4567',
+    address: 'Calle 93 # 12-45, Apto 501',
     city: 'Bogotá',
+    zip: '110221',
     paymentMethod: 'card'
   });
 
@@ -27,8 +28,8 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
       onClearCart();
       // Launch Gold Confetti celebration
       confetti({
-        particleCount: 120,
-        spread: 80,
+        particleCount: 100,
+        spread: 70,
         origin: { y: 0.6 },
         colors: ['#C59F60', '#DDB856', '#FFFFFF', '#0A0A0A']
       });
@@ -36,28 +37,28 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-      <div className={`rounded-3xl max-w-2xl w-full shadow-2xl border overflow-hidden relative transition-all ${
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-2.5 sm:p-4">
+      <div className={`rounded-3xl max-w-2xl w-full shadow-2xl border overflow-hidden relative transition-all max-h-[92vh] overflow-y-auto ${
         isDark ? 'bg-[#111111] border-[#222222] text-white' : 'bg-white border-[#DDDDDD] text-[#1A1A1A]'
       }`}>
         
         {/* Header */}
-        <div className="bg-[#0A0A0A] text-white p-6 flex items-center justify-between border-b border-[#222222]">
-          <div className="flex items-center gap-3">
-            <TavoIsotype className="w-10 h-10" />
+        <div className="bg-[#0A0A0A] text-white p-4 sm:p-6 flex items-center justify-between border-b border-[#222222]">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <TavoIsotype className="w-8 h-8 sm:w-10 sm:h-10" />
             <div className="text-left">
-              <h2 className="text-xl font-black font-heading tracking-tight flex items-center gap-1.5">
+              <h2 className="text-lg sm:text-xl font-black font-heading tracking-tight flex items-center gap-1.5">
                 <span>Checkout Seguro</span>
                 <span className="text-[#C59F60]">TAVO</span>
               </h2>
-              <p className="text-xs text-neutral-400 font-mono">Finalizar compra con garantía oficial</p>
+              <p className="text-[11px] sm:text-xs text-neutral-400 font-mono">Garantía oficial y entrega express 24h</p>
             </div>
           </div>
 
           {step !== 3 && (
             <button 
               onClick={onClose} 
-              className="w-9 h-9 bg-[#1A1A1A] hover:bg-[#C59F60] hover:text-black rounded-full flex items-center justify-center text-neutral-400 transition-colors border border-[#2A2A2A]"
+              className="w-8 h-8 sm:w-9 sm:h-9 bg-[#1A1A1A] hover:bg-[#C59F60] hover:text-black rounded-full flex items-center justify-center text-neutral-400 transition-colors border border-[#2A2A2A]"
               aria-label="Cerrar modal"
             >
               <X className="w-4 h-4" />
@@ -66,36 +67,36 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
         </div>
 
         {/* Step Indicator */}
-        <div className={`px-6 py-3 border-b flex justify-between text-xs font-mono font-bold ${
+        <div className={`px-4 sm:px-6 py-2.5 sm:py-3 border-b flex justify-between text-[10px] sm:text-xs font-mono font-bold ${
           isDark ? 'bg-[#161616] border-[#222222] text-neutral-400' : 'bg-[#FAFAFA] border-[#EAEAEA] text-neutral-600'
         }`}>
           <span className={step >= 1 ? 'text-[#C59F60] font-black' : ''}>
-            1. Datos de Entrega
+            1. Envío
           </span>
           <span>→</span>
           <span className={step >= 2 ? 'text-[#C59F60] font-black' : ''}>
-            2. Método de Pago
+            2. Pago VIP
           </span>
           <span>→</span>
           <span className={step === 3 ? 'text-[#2ECC71] font-black' : ''}>
-            3. Pedido Confirmado
+            3. Confirmado
           </span>
         </div>
 
         {/* Step Content */}
-        <div className="p-6 text-left">
+        <div className="p-4 sm:p-6 text-left">
           
           {/* Step 1: Address */}
           {step === 1 && (
-            <form onSubmit={handleNextStep} className="space-y-4">
-              <h3 className={`text-base font-extrabold flex items-center gap-2 font-heading ${isDark ? 'text-white' : 'text-[#1A1A1A]'}`}>
+            <form onSubmit={handleNextStep} className="space-y-3.5 sm:space-y-4">
+              <h3 className={`text-sm sm:text-base font-extrabold flex items-center gap-2 font-heading ${isDark ? 'text-white' : 'text-[#1A1A1A]'}`}>
                 <MapPin className="w-4 h-4 text-[#C59F60]" />
-                <span>Dirección de Envío VIP</span>
+                <span>Dirección de Envío VIP (Colombia)</span>
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 <div>
-                  <label className="block text-neutral-400 font-bold mb-1 font-mono">Nombre Completo:</label>
+                  <label className="block text-neutral-400 font-bold mb-1 font-mono text-[11px]">Nombre Completo:</label>
                   <input
                     type="text"
                     required
@@ -107,9 +108,9 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
                   />
                 </div>
                 <div>
-                  <label className="block text-neutral-400 font-bold mb-1 font-mono">Teléfono de Contacto:</label>
+                  <label className="block text-neutral-400 font-bold mb-1 font-mono text-[11px]">Teléfono Móvil (WhatsApp):</label>
                   <input
-                    type="text"
+                    type="tel"
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -119,7 +120,7 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
                   />
                 </div>
                 <div className="sm:col-span-2">
-                  <label className="block text-neutral-400 font-bold mb-1 font-mono">Dirección Completa (Calle, Número, Depto):</label>
+                  <label className="block text-neutral-400 font-bold mb-1 font-mono text-[11px]">Dirección Completa (Calle, Cra, Apto, Edificio):</label>
                   <input
                     type="text"
                     required
@@ -131,7 +132,7 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
                   />
                 </div>
                 <div>
-                  <label className="block text-neutral-400 font-bold mb-1 font-mono">Ciudad / Estado:</label>
+                  <label className="block text-neutral-400 font-bold mb-1 font-mono text-[11px]">Ciudad / Municipio:</label>
                   <input
                     type="text"
                     required
@@ -143,7 +144,7 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
                   />
                 </div>
                 <div>
-                  <label className="block text-neutral-400 font-bold mb-1 font-mono">Código Postal:</label>
+                  <label className="block text-neutral-400 font-bold mb-1 font-mono text-[11px]">Código Postal / Barrio:</label>
                   <input
                     type="text"
                     required
@@ -156,12 +157,12 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
                 </div>
               </div>
 
-              <div className="pt-4 flex justify-end">
+              <div className="pt-3 sm:pt-4 flex justify-end">
                 <button
                   type="submit"
-                  className="btn-gold-primary px-6 py-3 rounded-xl text-xs font-black"
+                  className="w-full sm:w-auto btn-gold-primary px-6 py-3 rounded-xl text-xs font-black flex items-center justify-center gap-2"
                 >
-                  <span>Continuar a Selección de Pago</span>
+                  <span>Continuar al Pago</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -170,20 +171,20 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
 
           {/* Step 2: Payment */}
           {step === 2 && (
-            <form onSubmit={handleNextStep} className="space-y-4">
-              <h3 className={`text-base font-extrabold flex items-center gap-2 font-heading ${isDark ? 'text-white' : 'text-[#1A1A1A]'}`}>
+            <form onSubmit={handleNextStep} className="space-y-3.5 sm:space-y-4">
+              <h3 className={`text-sm sm:text-base font-extrabold flex items-center gap-2 font-heading ${isDark ? 'text-white' : 'text-[#1A1A1A]'}`}>
                 <CreditCard className="w-4 h-4 text-[#C59F60]" />
                 <span>Seleccionar Método de Pago</span>
               </h3>
 
-              <div className="space-y-2.5 text-xs">
-                {/* Credit Card */}
-                <label className={`flex items-center justify-between p-3.5 border-2 rounded-2xl cursor-pointer transition-all ${
+              <div className="space-y-2 text-xs">
+                {/* Credit Card / PSE */}
+                <label className={`flex items-center justify-between p-3 sm:p-3.5 border-2 rounded-2xl cursor-pointer transition-all ${
                   formData.paymentMethod === 'card' 
                     ? 'border-[#C59F60] bg-[#C59F60]/10' 
                     : isDark ? 'border-[#222222] bg-[#161616]' : 'border-neutral-200 bg-white'
                 }`}>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2.5 sm:gap-3">
                     <input 
                       type="radio" 
                       name="payment" 
@@ -192,46 +193,22 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
                       className="accent-[#C59F60]" 
                     />
                     <div>
-                      <span className={`font-extrabold block ${isDark ? 'text-white' : 'text-[#1A1A1A]'}`}>
-                        Tarjeta de Crédito / Débito (Hasta 12 Meses Sin Intereses)
+                      <span className={`font-extrabold block text-xs sm:text-sm ${isDark ? 'text-white' : 'text-[#1A1A1A]'}`}>
+                        Tarjeta de Crédito / Débito / PSE
                       </span>
-                      <p className="text-[11px] text-neutral-400">Visa, Mastercard, American Express, Apple Pay</p>
+                      <p className="text-[10px] sm:text-[11px] text-neutral-400">Visa, Mastercard, Nequi, Daviplata, Bancolombia</p>
                     </div>
                   </div>
-                  <CreditCard className="w-5 h-5 text-[#C59F60]" />
-                </label>
-
-                {/* PayPal */}
-                <label className={`flex items-center justify-between p-3.5 border rounded-2xl cursor-pointer transition-all ${
-                  formData.paymentMethod === 'paypal' 
-                    ? 'border-[#C59F60] bg-[#C59F60]/10' 
-                    : isDark ? 'border-[#222222] bg-[#161616]' : 'border-neutral-200 bg-white'
-                }`}>
-                  <div className="flex items-center gap-3">
-                    <input 
-                      type="radio" 
-                      name="payment" 
-                      checked={formData.paymentMethod === 'paypal'} 
-                      onChange={() => setFormData({ ...formData, paymentMethod: 'paypal' })}
-                      className="accent-[#C59F60]" 
-                    />
-                    <div>
-                      <span className={`font-extrabold block ${isDark ? 'text-white' : 'text-[#1A1A1A]'}`}>
-                        PayPal Express Checkout
-                      </span>
-                      <p className="text-[11px] text-neutral-400">Protección al comprador garantizada</p>
-                    </div>
-                  </div>
-                  <span className="font-extrabold text-blue-500 font-mono text-sm">PayPal</span>
+                  <CreditCard className="w-4 h-4 sm:w-5 sm:h-5 text-[#C59F60] shrink-0" />
                 </label>
 
                 {/* WhatsApp Direct Concierge Payment */}
-                <label className={`flex items-center justify-between p-3.5 border rounded-2xl cursor-pointer transition-all ${
+                <label className={`flex items-center justify-between p-3 sm:p-3.5 border rounded-2xl cursor-pointer transition-all ${
                   formData.paymentMethod === 'whatsapp' 
                     ? 'border-[#25D366] bg-[#25D366]/10' 
                     : isDark ? 'border-[#222222] bg-[#161616]' : 'border-neutral-200 bg-white'
                 }`}>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2.5 sm:gap-3">
                     <input 
                       type="radio" 
                       name="payment" 
@@ -240,30 +217,30 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
                       className="accent-[#25D366]" 
                     />
                     <div>
-                      <span className={`font-extrabold block ${isDark ? 'text-white' : 'text-[#1A1A1A]'}`}>
+                      <span className={`font-extrabold block text-xs sm:text-sm ${isDark ? 'text-white' : 'text-[#1A1A1A]'}`}>
                         Coordinar con Asesor VIP por WhatsApp
                       </span>
-                      <p className="text-[11px] text-neutral-400">Transferencia SPEI, Facturación o Asistencia personalizada</p>
+                      <p className="text-[10px] sm:text-[11px] text-neutral-400">Transferencia Bancolombia / Contraentrega</p>
                     </div>
                   </div>
-                  <MessageCircle className="w-5 h-5 text-[#25D366]" />
+                  <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] shrink-0" />
                 </label>
               </div>
 
               {/* Order Total Box */}
-              <div className="bg-[#0A0A0A] text-white p-4 rounded-2xl flex items-center justify-between border border-[#222222]">
+              <div className="bg-[#0A0A0A] text-white p-3.5 sm:p-4 rounded-2xl flex items-center justify-between border border-[#222222]">
                 <div>
-                  <p className="text-[11px] text-neutral-400 font-mono">Total a Pagar con Envío Express:</p>
-                  <p className="text-2xl font-black text-[#C59F60] font-mono">${cartTotal.toLocaleString('es-CO')} COP</p>
+                  <p className="text-[10px] sm:text-[11px] text-neutral-400 font-mono">Total a Pagar (Envío Express Gratis):</p>
+                  <p className="text-xl sm:text-2xl font-black text-[#C59F60] font-mono">${cartTotal.toLocaleString('es-CO')} COP</p>
                 </div>
                 <div className="text-right">
-                  <span className="bg-[#C59F60] text-[#0A0A0A] text-[10px] font-black px-2.5 py-1 rounded-full uppercase font-mono">
-                    D'TAVO EXPRESS 24H
+                  <span className="bg-[#C59F60] text-[#0A0A0A] text-[9px] sm:text-[10px] font-black px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full uppercase font-mono">
+                    24H EXPRESS
                   </span>
                 </div>
               </div>
 
-              <div className="pt-2 flex items-center justify-between">
+              <div className="pt-2 flex flex-col-reverse sm:flex-row items-center justify-between gap-3">
                 <button
                   type="button"
                   onClick={() => setStep(1)}
@@ -274,9 +251,9 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
 
                 <button
                   type="submit"
-                  className="btn-gold-primary px-7 py-3.5 rounded-xl text-xs font-black shadow-xl"
+                  className="w-full sm:w-auto btn-gold-primary px-6 py-3.5 rounded-xl text-xs font-black shadow-xl flex items-center justify-center gap-2"
                 >
-                  <span>Confirmar & Procesar Orden</span>
+                  <span>Confirmar Pedido</span>
                   <CheckCircle className="w-4 h-4" />
                 </button>
               </div>
@@ -285,9 +262,9 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
 
           {/* Step 3: Confirmation */}
           {step === 3 && (
-            <div className="text-center py-6 space-y-4">
-              <div className="w-20 h-20 mx-auto rounded-3xl bg-[#C59F60]/20 border-2 border-[#C59F60] flex items-center justify-center animate-gold-pulse">
-                <TavoIsotype className="w-12 h-12" />
+            <div className="text-center py-4 sm:py-6 space-y-3.5 sm:space-y-4">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-3xl bg-[#C59F60]/20 border-2 border-[#C59F60] flex items-center justify-center animate-gold-pulse">
+                <TavoIsotype className="w-10 h-10 sm:w-12 sm:h-12" />
               </div>
 
               <div className="inline-flex items-center gap-1.5 bg-[#2ECC71]/15 text-[#2ECC71] border border-[#2ECC71]/30 text-xs font-extrabold px-3 py-1 rounded-full font-mono">
@@ -295,34 +272,34 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
                 <span>¡Pedido Confirmado con Éxito!</span>
               </div>
 
-              <h2 className={`text-2xl sm:text-3xl font-black font-heading ${isDark ? 'text-white' : 'text-[#1A1A1A]'}`}>
+              <h2 className={`text-xl sm:text-3xl font-black font-heading ${isDark ? 'text-white' : 'text-[#1A1A1A]'}`}>
                 ¡Tu orden exclusiva está en camino!
               </h2>
 
-              <p className="text-xs text-neutral-400 max-w-md mx-auto">
-                Estimado(a) <strong>{formData.name}</strong>, tu orden <strong className="text-[#C59F60] font-mono">#DTAVO-2026-8941</strong> ha sido confirmada y está siendo empaquetada con los más altos estándares de calidad.
+              <p className="text-xs text-neutral-400 max-w-md mx-auto leading-relaxed">
+                Estimado(a) <strong>{formData.name}</strong>, tu orden <strong className="text-[#C59F60] font-mono">#TAVO-2026-CO</strong> ha sido confirmada y está siendo despachada para entrega asegurada.
               </p>
 
-              <div className={`p-4 rounded-2xl border text-left max-w-md mx-auto text-xs space-y-1.5 font-mono ${
+              <div className={`p-3.5 sm:p-4 rounded-2xl border text-left max-w-md mx-auto text-xs space-y-1.5 font-mono ${
                 isDark ? 'bg-[#161616] border-[#222222]' : 'bg-[#FAFAFA] border-[#EAEAEA]'
               }`}>
                 <div className="flex justify-between font-bold">
-                  <span className="text-neutral-400">Entrega Estimada:</span>
-                  <span className="text-[#2ECC71]">Mañana antes de las 18:00 hrs</span>
+                  <span className="text-neutral-400">Entrega:</span>
+                  <span className="text-[#2ECC71]">24h Garantizadas</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-neutral-400">Destino:</span>
-                  <span className={isDark ? 'text-white' : 'text-black'}>{formData.address}, {formData.city}</span>
+                  <span className={`truncate max-w-[200px] ${isDark ? 'text-white' : 'text-black'}`}>{formData.address}, {formData.city}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-neutral-400">Garantía Oficial:</span>
-                  <span className="text-[#C59F60] font-bold">12 Meses D'TAVO VIP</span>
+                  <span className="text-neutral-400">Garantía:</span>
+                  <span className="text-[#C59F60] font-bold">12 Meses Oficial TAVO</span>
                 </div>
               </div>
 
               <button
                 onClick={onClose}
-                className="mt-4 btn-gold-primary px-8 py-3 rounded-xl text-xs font-black"
+                className="mt-3 btn-gold-primary px-8 py-3 rounded-xl text-xs font-black"
               >
                 Volver a la Colección
               </button>

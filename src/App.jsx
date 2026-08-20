@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Home, LayoutGrid, Heart, ShoppingBag, Sparkles } from 'lucide-react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import VipBenefitsBar from './components/VipBenefitsBar';
@@ -142,8 +143,12 @@ export default function App() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <div className={`min-h-screen flex flex-col font-sans antialiased transition-colors duration-300 ${
+    <div className={`min-h-screen flex flex-col font-sans antialiased transition-colors duration-300 pb-16 md:pb-0 ${
       theme === 'dark' ? 'bg-[#0A0A0A] text-white' : 'bg-[#F5F5F5] text-[#1A1A1A]'
     }`}>
       
@@ -222,6 +227,64 @@ export default function App() {
           scrollToCatalog();
         }} 
       />
+
+      {/* Mobile Floating Bottom Bar */}
+      <nav 
+        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0A0A0A]/95 backdrop-blur-xl border-t border-[#222222] px-2 py-1.5 shadow-2xl flex items-center justify-around"
+        aria-label="Navegación móvil"
+      >
+        <button
+          onClick={scrollToTop}
+          className="flex flex-col items-center justify-center py-1 px-2.5 text-neutral-400 hover:text-[#C59F60] active:scale-95 transition-all"
+        >
+          <Home className="w-5 h-5" />
+          <span className="text-[10px] font-bold font-mono mt-0.5">Inicio</span>
+        </button>
+
+        <button
+          onClick={scrollToCatalog}
+          className="flex flex-col items-center justify-center py-1 px-2.5 text-neutral-400 hover:text-[#C59F60] active:scale-95 transition-all"
+        >
+          <LayoutGrid className="w-5 h-5" />
+          <span className="text-[10px] font-bold font-mono mt-0.5">Catálogo</span>
+        </button>
+
+        <button
+          onClick={() => setIsTechBotOpen(true)}
+          className="flex flex-col items-center justify-center py-1 px-2.5 text-[#C59F60] active:scale-95 transition-all relative"
+        >
+          <div className="w-8 h-8 rounded-full bg-[#C59F60] text-[#0A0A0A] flex items-center justify-center shadow-md shadow-[#C59F60]/30 -mt-3">
+            <Sparkles className="w-4 h-4" />
+          </div>
+          <span className="text-[10px] font-black font-mono mt-0.5 text-[#C59F60]">Asesor</span>
+        </button>
+
+        <button
+          onClick={() => setIsWishlistOpen(true)}
+          className="flex flex-col items-center justify-center py-1 px-2.5 text-neutral-400 hover:text-[#C59F60] active:scale-95 transition-all relative"
+        >
+          <Heart className="w-5 h-5" />
+          {wishlistIds.length > 0 && (
+            <span className="absolute top-0 right-2 w-4 h-4 bg-[#C59F60] text-black font-black font-mono text-[9px] rounded-full flex items-center justify-center">
+              {wishlistIds.length}
+            </span>
+          )}
+          <span className="text-[10px] font-bold font-mono mt-0.5">Favoritos</span>
+        </button>
+
+        <button
+          onClick={() => setIsCartOpen(true)}
+          className="flex flex-col items-center justify-center py-1 px-2.5 text-neutral-400 hover:text-[#C59F60] active:scale-95 transition-all relative"
+        >
+          <ShoppingBag className="w-5 h-5" />
+          {cartCount > 0 && (
+            <span className="absolute top-0 right-2 w-4 h-4 bg-[#C59F60] text-black font-black font-mono text-[9px] rounded-full flex items-center justify-center">
+              {cartCount}
+            </span>
+          )}
+          <span className="text-[10px] font-bold font-mono mt-0.5">Cesta</span>
+        </button>
+      </nav>
 
       {/* Quick View Modal */}
       {quickViewProduct && (
