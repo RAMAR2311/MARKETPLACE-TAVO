@@ -264,6 +264,8 @@ export default function App() {
       {/* Footer */}
       <Footer 
         theme={theme}
+        categories={categories}
+        onAdminClick={() => setIsAdminOpen(true)}
         onCategorySelect={(cat) => {
           setSelectedCategory(cat);
           scrollToCatalog();
@@ -388,6 +390,14 @@ export default function App() {
       {/* Floating Premium Direct Contact Buttons (WhatsApp & Instagram) */}
       <FloatingContactButtons />
 
+      <AdminPanelModal 
+        isOpen={isAdminOpen} 
+        onClose={() => setIsAdminOpen(false)} 
+        products={products}
+        setProducts={setProducts}
+        categories={categories}
+        setCategories={setCategories}
+      />
     </div>
   );
 }
