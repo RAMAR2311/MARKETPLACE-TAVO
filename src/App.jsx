@@ -12,6 +12,7 @@ import CheckoutModal from './components/CheckoutModal';
 import WishlistModal from './components/WishlistModal';
 import TMSAssistantWidget from './components/TMSAssistantWidget';
 import FlyingMascotOverlay from './components/FlyingMascotOverlay';
+import FloatingContactButtons from './components/FloatingContactButtons';
 import Footer from './components/Footer';
 
 import { INITIAL_PRODUCTS } from './data/products';
@@ -342,6 +343,9 @@ export default function App() {
         onSelectProduct={(prod) => setQuickViewProduct(prod)}
         products={products}
       />
+
+      {/* Floating Premium Direct Contact Buttons (WhatsApp & Instagram) */}
+      <FloatingContactButtons />
 
     </div>
   );

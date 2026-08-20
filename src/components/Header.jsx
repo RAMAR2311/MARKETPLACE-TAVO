@@ -11,8 +11,9 @@ import {
   Sun, 
   Moon, 
   MessageCircle, 
-  Command 
+  Command
 } from 'lucide-react';
+import { InstagramIcon } from './SocialIcons';
 import { CATEGORIES } from '../data/products';
 import TavoLogo from './TavoLogo';
 
@@ -69,14 +70,22 @@ export default function Header({
           {/* Right info */}
           <div className="flex items-center gap-3 sm:gap-4 text-neutral-300 text-[11px] sm:text-xs font-semibold tracking-wide shrink-0">
             <a 
-              href="https://wa.me/1234567890?text=Hola%20La%20tienda%20TAVO,%20deseo%20asesor%C3%ADa%20personalizada" 
+              href="https://www.instagram.com/latiendadetavo?igsh=bmwwYTViazZmMGdj" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-pink-400 hover:text-pink-300 transition-colors"
+            >
+              <InstagramIcon className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Instagram</span>
+            </a>
+            <a 
+              href="https://wa.me/573142626916?text=Hola%20La%20tienda%20TAVO,%20deseo%20asesor%C3%ADa%20personalizada" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center gap-1 text-[#25D366] hover:text-[#20BA5A] transition-colors"
             >
               <MessageCircle className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">WhatsApp VIP</span>
-              <span className="sm:hidden font-mono text-[10px]">VIP</span>
             </a>
             <span className="hidden md:flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer">
               <ShieldCheck className="w-3.5 h-3.5 text-[#C59F60]" /> Garantía 12 Meses

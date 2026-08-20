@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Truck, ShieldCheck, Mail, Phone, ArrowRight, Globe, MessageCircle, Send, Crown, Lock, Sparkles, CheckCircle } from 'lucide-react';
+import { InstagramIcon } from './SocialIcons';
 import TavoLogo, { TavoIsotype } from './TavoLogo';
 
 export default function Footer({ onCategorySelect }) {
@@ -129,13 +130,22 @@ export default function Footer({ onCategorySelect }) {
             {/* Social / Contact Icons */}
             <div className="flex items-center gap-2.5 pt-1 sm:pt-2">
               <a 
-                href="https://wa.me/1234567890?text=Hola%20La%20tienda%20TAVO"
+                href="https://wa.me/573142626916?text=Hola%20La%20tienda%20TAVO"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-xl bg-[#1A1A1A] hover:bg-[#25D366] text-neutral-300 hover:text-white flex items-center justify-center transition-all duration-200 border border-[#2A2A2A]"
-                title="WhatsApp Directo"
+                title="WhatsApp Directo (+57 314 262 6916)"
               >
                 <MessageCircle className="w-4 h-4" />
+              </a>
+              <a 
+                href="https://www.instagram.com/latiendadetavo?igsh=bmwwYTViazZmMGdj"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-xl bg-[#1A1A1A] hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF] text-neutral-300 hover:text-white flex items-center justify-center transition-all duration-200 border border-[#2A2A2A]"
+                title="Instagram Oficial @latiendadetavo"
+              >
+                <InstagramIcon className="w-4 h-4" />
               </a>
               <button 
                 className="w-10 h-10 rounded-xl bg-[#1A1A1A] hover:bg-[#C59F60] text-neutral-300 hover:text-black flex items-center justify-center transition-all duration-200 border border-[#2A2A2A]"
@@ -187,7 +197,7 @@ export default function Footer({ onCategorySelect }) {
             <ul className="space-y-3 sm:space-y-3.5 text-xs sm:text-sm text-neutral-300 font-medium">
               <li className="flex items-center gap-2.5 sm:gap-3">
                 <Phone className="w-4 h-4 text-[#C59F60] shrink-0" />
-                <span className="font-mono">800-TAVO-VIP</span>
+                <a href="tel:+573142626916" className="font-mono hover:text-[#C59F60] transition-colors">+57 314 262 6916</a>
               </li>
               <li className="flex items-center gap-2.5 sm:gap-3">
                 <Mail className="w-4 h-4 text-[#C59F60] shrink-0" />

@@ -297,12 +297,26 @@ export default function CheckoutModal({ theme, isOpen, onClose, cartTotal, onCle
                 </div>
               </div>
 
-              <button
-                onClick={onClose}
-                className="mt-3 btn-gold-primary px-8 py-3 rounded-xl text-xs font-black"
-              >
-                Volver a la Colección
-              </button>
+              {formData.paymentMethod === 'whatsapp' && (
+                <a
+                  href={`https://wa.me/573142626916?text=Hola%20La%20tienda%20TAVO,%20acabo%20de%20realizar%20el%20pedido%20TAVO-2026-CO%20a%20nombre%20de%20${encodeURIComponent(formData.name)}%20por%20valor%20de%20$${cartTotal.toLocaleString('es-CO')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 btn-whatsapp px-6 py-3 rounded-xl text-xs font-black shadow-lg"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Contactar Asesor por WhatsApp (+57 314 262 6916)</span>
+                </a>
+              )}
+
+              <div>
+                <button
+                  onClick={onClose}
+                  className="mt-3 btn-gold-primary px-8 py-3 rounded-xl text-xs font-black"
+                >
+                  Volver a la Colección
+                </button>
+              </div>
             </div>
           )}
 

@@ -223,7 +223,7 @@ export default function TMSAssistantWidget({ theme, isOpen, onClose, onSelectPro
             </button>
 
             <a
-              href={`https://wa.me/1234567890?text=Hola%20La%20tienda%20TAVO,%20me%20interesa%20comprar%20el%20${encodeURIComponent(recommendation.name)}`}
+              href={`https://wa.me/573142626916?text=Hola%20La%20tienda%20TAVO,%20me%20interesa%20comprar%20el%20${encodeURIComponent(recommendation.name)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full btn-whatsapp py-2.5 rounded-xl text-xs font-black shadow-md flex items-center justify-center gap-1.5"
