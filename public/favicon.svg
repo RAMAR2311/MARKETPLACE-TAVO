@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" fill="none">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2BF82" />
+      <stop offset="35%" stop-color="#C59F60" />
+      <stop offset="70%" stop-color="#F5D89D" />
+      <stop offset="100%" stop-color="#8C6A34" />
+    </linearGradient>
+    <linearGradient id="goldDark" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8C6A34" />
+      <stop offset="50%" stop-color="#C59F60" />
+      <stop offset="100%" stop-color="#E5C07B" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="140" height="140" rx="28" fill="#0A0A0A"/>
+  
+  <g transform="translate(10, 10) scale(0.85)">
+    <!-- Central Geometric T -->
+    <path d="M32 24 L108 24 L122 38 L98 38 L80 38 L80 82 L70 96 L60 82 L60 38 L42 38 L18 38 Z" fill="url(#gold)" />
+    
+    <!-- Left Angular Wing -->
+    <path d="M18 48 L36 48 L44 58 L38 78 L54 102 L70 122 L54 102 L30 84 L22 68 L14 54 Z" fill="url(#goldDark)" />
+    
+    <!-- Right Angular Wing -->
+    <path d="M122 48 L104 48 L96 58 L102 78 L86 102 L70 122 L86 102 L110 84 L118 68 L126 54 Z" fill="url(#goldDark)" />
+    
+    <!-- Center Diamond Spear -->
+    <path d="M70 76 L82 92 L70 114 L58 92 Z" fill="url(#gold)" />
+  </g>
+</svg>

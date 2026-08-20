@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;600;700&family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap');
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════
+   SISTEMA DE DISEÑO DE ÉLITE: LA TIENDA D'TAVO
+   "Modern Gold & Sleek Dark" Ultra-Luxury Technology Edition
+   ═══════════════════════════════════════════════════════════════ */
+
+:root, [data-theme="dark"] {
+  font-family: 'Urbanist', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Urbanist', sans-serif;
+  --font-body: 'Urbanist', 'Inter', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+  
+  /* Core Gold Identity Tokens */
+  --color-gold-primary: #C59F60;
+  --color-gold-hover: #A6824D;
+  --color-gold-light: #DDB856;
+  --color-gold-dark: #8C6A34;
+  --gold-gradient: linear-gradient(135deg, #C59F60 0%, #F5E6C8 50%, #DDB856 100%);
+  --gold-gradient-dark: linear-gradient(135deg, #8C6A34 0%, #C59F60 100%);
+  --gold-glow: 0 4px 25px rgba(197, 159, 96, 0.35);
+  --gold-glow-lg: 0 8px 35px rgba(197, 159, 96, 0.45);
+  --gold-glow-card: 0 0 30px rgba(197, 159, 96, 0.15);
+  --gold-translucent: rgba(197, 159, 96, 0.10);
+  --gold-translucent-hover: rgba(197, 159, 96, 0.18);
+  
+  /* Dark Theme Surfaces (Deep Obsidian) */
+  --bg-main: #0A0A0A;
+  --bg-surface: #111111;
+  --bg-surface-elevated: #161616;
+  --bg-surface-glass: rgba(17, 17, 17, 0.85);
+  --bg-input: #1A1A1A;
+  --border-color: #222222;
+  --border-color-hover: #333333;
+  --border-gold-subtle: rgba(197, 159, 96, 0.25);
+  --border-gold-glow: rgba(197, 159, 96, 0.5);
+  
+  /* Dark Theme Typography */
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0A0A0;
+  --text-muted: #666666;
+  --text-inverse: #0A0A0A;
+  
+  /* Functional / Feedback */
+  --color-success: #2ECC71;
+  --color-success-bg: rgba(46, 204, 113, 0.12);
+  --color-danger: #E74C3C;
+  --color-danger-bg: rgba(231, 76, 60, 0.12);
+  --color-whatsapp: #25D366;
+  --color-whatsapp-hover: #20BA5A;
+  
+  /* Shadows */
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --card-shadow-hover: 0 16px 40px rgba(197, 159, 96, 0.2), 0 4px 16px rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="light"] {
+  /* Light Theme Surfaces (Clean Marble) */
+  --bg-main: #F5F5F5;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #FAFAFA;
+  --bg-surface-glass: rgba(255, 255, 255, 0.9);
+  --bg-input: #FFFFFF;
+  --border-color: #DDDDDD;
+  --border-color-hover: #CCCCCC;
+  --border-gold-subtle: rgba(197, 159, 96, 0.35);
+  --border-gold-glow: rgba(197, 159, 96, 0.6);
+  
+  /* Light Theme Typography */
+  --text-primary: #1A1A1A;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --text-inverse: #FFFFFF;
+  
+  /* Shadows */
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 16px 35px rgba(197, 159, 96, 0.16), 0 4px 12px rgba(0, 0, 0, 0.08);
+  --gold-glow: 0 4px 18px rgba(197, 159, 96, 0.25);
+  --gold-glow-card: 0 0 25px rgba(197, 159, 96, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.03em;
+}
+
+.font-mono {
+  font-family: var(--font-mono) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LUXURY GOLD SCROLLBAR
+   ═══════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #C59F60 0%, #8C6A34 100%);
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #DDB856 0%, #C59F60 100%);
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ═══════════════════════════════════════════════════════════════
+   BUTTONS & INTERACTIVE TOKENS
+   ═══════════════════════════════════════════════════════════════ */
+
+.btn-gold-primary {
+  background: linear-gradient(135deg, #C59F60 0%, #DDB856 100%);
+  color: #0A0A0A;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(197, 159, 96, 0.35);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.btn-gold-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: 0.5s;
+}
+.btn-gold-primary:hover::after {
+  left: 100%;
+}
+.btn-gold-primary:hover {
+  background: linear-gradient(135deg, #DDB856 0%, #C59F60 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(197, 159, 96, 0.5);
+}
+.btn-gold-primary:active {
+  transform: translateY(0);
+}
+
+.btn-gold-pill {
+  border-radius: 50px !important;
+}
+
+.btn-gold-outline {
+  background: transparent;
+  color: #C59F60;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  border: 1px solid #C59F60;
+  border-radius: 12px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.btn-gold-outline:hover {
+  background: rgba(197, 159, 96, 0.12);
+  color: #DDB856;
+  border-color: #DDB856;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(197, 159, 96, 0.18);
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: #FFFFFF;
+  font-weight: 800;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.btn-whatsapp:hover {
+  background: #20BA5A;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LUXURY UTILITIES & GRADIENTS
+   ═══════════════════════════════════════════════════════════════ */
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #C59F60 0%, #FFFFFF 50%, #DDB856 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-solid {
+  color: #C59F60;
+}
+
+.gold-glow {
+  box-shadow: var(--gold-glow);
+}
+
+.gold-glow-card {
+  box-shadow: var(--gold-glow-card);
+}
+
+.gold-border-subtle {
+  border-color: var(--border-gold-subtle) !important;
+}
+
+.gold-border-glow {
+  border-color: var(--border-gold-glow) !important;
+  box-shadow: 0 0 20px rgba(197, 159, 96, 0.25);
+}
+
+.glass-dark {
+  background: rgba(17, 17, 17, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(197, 159, 96, 0.15);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(197, 159, 96, 0.2);
+}
+
+.badge-gold {
+  background: rgba(197, 159, 96, 0.12);
+  color: #C59F60;
+  border: 1px solid rgba(197, 159, 96, 0.35);
+  font-weight: 800;
+}
+
+.badge-success {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.badge-danger {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   KEYFRAME ANIMATIONS
+   ═══════════════════════════════════════════════════════════════ */
+
+@keyframes floatMascot {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(0.8deg); }
+  50% { transform: translateY(-15px) rotate(-0.5deg); }
+  75% { transform: translateY(-6px) rotate(0.3deg); }
+}
+
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(197, 159, 96, 0.45); }
+  50% { box-shadow: 0 0 0 16px rgba(197, 159, 96, 0); }
+}
+
+@keyframes flyGoldItem {
+  0% { transform: translate(-100px, 80px) scale(0.3) rotate(-20deg); opacity: 0; }
+  20% { opacity: 1; transform: translate(10vw, 20px) scale(0.8) rotate(-5deg); }
+  80% { opacity: 1; transform: translate(80vw, -100px) scale(1.05) rotate(5deg); }
+  100% { transform: translate(100vw, -160px) scale(0.8) rotate(15deg); opacity: 0; }
+}
+
+@keyframes shimmerGold {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.08); }
+}
+
+.animate-float-mascot {
+  animation: floatMascot 4.5s ease-in-out infinite;
+}
+
+.animate-gold-pulse {
+  animation: goldPulse 2.5s infinite;
+}
+
+.animate-flying-item {
+  animation: flyGoldItem 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+.shimmer-gold {
+  background: linear-gradient(90deg, rgba(197, 159, 96, 0) 0%, rgba(197, 159, 96, 0.3) 50%, rgba(197, 159, 96, 0) 100%);
+  background-size: 200% 100%;
+  animation: shimmerGold 2.5s infinite;
+}
